@@ -1,0 +1,25 @@
+{
+  "name": "typescript-task-tracker",
+  "version": "1.0.0",
+  "description": "Projektet som vi kommer bygga på i tre veckor.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lexicon-Utbildning-Front-end-2026/typescript-task-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Lexicon-Utbildning-Front-end-2026/typescript-task-tracker/issues"
+  },
+  "homepage": "https://github.com/Lexicon-Utbildning-Front-end-2026/typescript-task-tracker#readme",
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}
