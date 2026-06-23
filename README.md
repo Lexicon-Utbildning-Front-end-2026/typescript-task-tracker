@@ -21,3 +21,5 @@ Extrauppgift: [Extrauppgift på funktioner](https://github.com/Lexicon-Utbildnin
 Dag 5: [Objekt](https://github.com/Lexicon-Utbildning-Front-end-2026/typescript-dag5-ovning)
 
 Extrauppgift: [Extrauppgift på objekt](https://github.com/Lexicon-Utbildning-Front-end-2026/typescript-dag5-extrauppgift)
+
+Dag 6: [Typer och interfaces](https://github.com/Lexicon-Utbildning-Front-end-2026/typescript-dag6-ovning)
