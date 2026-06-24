@@ -1,6 +1,18 @@
+/**
+ * Main Stylesheet
+ * Global styles, variables, utilities, and component styles for the application.
+ * 
+ * Dependencies:
+ * - @import "./theme.css"; (Theme design tokens)
+ */
+
 @import "./theme.css";
 
-/* Minimal Reset */
+/* ==========================================
+   1. Minimal CSS Reset
+   Resets default browser styling for consistent cross-browser rendering.
+   Uses border-box for easier width/height calculations.
+   ========================================== */
 html {
   box-sizing: border-box;
   font-size: var(--font-size-base);
@@ -12,21 +24,16 @@ html {
   box-sizing: inherit;
 }
 
+/* Remove default margins and padding from common elements */
 body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ol,
-ul {
+h1, h2, h3, h4, h5, h6,
+p, ol, ul {
   margin: 0;
   padding: 0;
   font-weight: normal;
 }
 
+/* Remove default list styling */
 ol,
 ul {
   list-style: none;
@@ -37,47 +44,52 @@ img {
   height: auto;
 }
 
-/* Properties */
+/* ==========================================
+   2. Design Tokens (CSS Custom Properties)
+   Centralized design variables for consistent theming.
+   Derived from theme.css, but explicitly defined here for clarity.
+   ========================================== */
 :root {
-  --font-size-base: 16px;
-  --space-unit: 1rem;
-  --ch-unit: 1ch;
+  /* Typography Scale */
+  --font-size-base: 16px;           /* Base font size */
+  --font-size-title: 2rem;          /* Heading title size */
+  --font-size-subtitle: 1.25rem;    /* Subheading size */
 
-  /* Typography sizes */
-  --font-size-title: 2rem;
-  --font-size-subtitle: 1.25rem;
+  /* Typography Weight */
+  --font-weight-bold: bold;         /* Bold text weight */
 
-  /* Typography weights */
-  --font-weight-bold: bold;
+  /* Spacing Units */
+  --space-unit: 1rem;               /* Primary spacing unit */
+  --ch-unit: 1ch;                   /* Character-based spacing unit (width of '0') */
 
-  /* Background colors */
-  --color-bg-task-list: var(--background-300);
-  --color-bg-task: var(--background-500);
+  /* Background Colors */
+  --color-bg-body: var(--background-200);    /* Page body background */
+  --color-bg-task-list: var(--background-300); /* Task list container background */
+  --color-bg-task: var(--background-500);     /* Individual task card background */
 
-  /* Status colors */
-  --color-status-pending: var(--primary-300);
-  --color-status-completed: var(--secondary-500);
-  --color-status-in-progress: var(--accent-500);
+  /* Status Indicator Colors */
+  --color-status-pending: var(--primary-300);      /* Pending status color */
+  --color-status-completed: var(--secondary-500);  /* Completed status color */
+  --color-status-in-progress: var(--accent-500);   /* In-progress status color */
 
-  /* Body background */
-  --color-bg-body: var(--background-200);
-
-  /* Layout dimensions */
-  --max-width-task-list: 15rem;
+  /* Layout Constraints */
+  --max-width-task-list: 15rem; /* Maximum width for task list column */
 }
 
-/* Utilities */
+/* ==========================================
+   3. Utility Classes
+   Reusable single-purpose classes for common styling needs.
+   Naming convention: u-{functionality}
+   ========================================== */
 .u-title {
   font-size: var(--font-size-title);
   font-weight: var(--font-weight-bold);
-
   color: var(--text-900);
 }
 
 .u-subtitle {
   font-size: var(--font-size-subtitle);
   font-weight: var(--font-weight-bold);
-
   color: var(--text-800);
 }
 
@@ -85,28 +97,27 @@ img {
   font-weight: var(--font-weight-bold);
 }
 
-/* Global Styles */
+/* ==========================================
+   4. Global Layout Styles
+   Base styling for main application layout components.
+   ========================================== */
 body {
   font-family: system-ui, sans-serif;
   background-color: var(--background-200);
 }
 
-/* Blocks */
 .header {
   display: flex;
   align-items: center;
   gap: var(--space-unit);
-
   padding-inline: var(--space-unit);
   background-color: var(--background-300);
-
   color: var(--text-800);
 }
 
 .app {
   display: flex;
   gap: var(--space-unit);
-
   padding-inline: var(--space-unit);
 }
 
@@ -115,14 +126,17 @@ body {
   padding-block: var(--space-unit);
 }
 
+/* ==========================================
+   5. Task List Component
+   Container for organizing tasks in a grid layout.
+   Supports responsive columns based on available width.
+   ========================================== */
 .task-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, var(--task-list-width, 30ch));
   gap: var(--space-unit);
-
   align-items: start;
   align-content: start;
-
   background-color: var(--color-bg-task-list);
   border-radius: var(--ch-unit);
   padding: var(--ch-unit);
@@ -133,20 +147,21 @@ body {
   font-size: 1.25rem;
   color: var(--text-900);
   font-weight: var(--font-weight-bold);
-
   padding-block-end: var(--ch-unit);
   border-block-end: 0.2ch solid var(--secondary-700);
 }
 
+/* ==========================================
+   6. Task Component (Card)
+   Individual task card styling within a task list.
+   ========================================== */
 .task {
   display: grid;
   grid-template-columns: repeat(auto-fit, 1fr);
   gap: var(--space-unit);
-
   align-items: start;
   justify-content: start;
   justify-items: start;
-
   background-color: var(--color-bg-task);
   border-radius: var(--ch-unit);
   padding: var(--ch-unit);
@@ -154,37 +169,41 @@ body {
 
 .task-title {
   font-size: 1.25rem;
-  color: var(--text-100);
+  color: var(--text-900);
   font-weight: var(--font-weight-bold);
-
   padding-block-end: var(--ch-unit);
   border-block-end: 0.2ch solid var(--primary-400);
-
   width: 100%;
 }
 
 .task-description {
+  /* No additional styles applied */
 }
 
-.task-priority {
-}
-
+/* ==========================================
+   7. Task Status Badge
+   Color-coded status indicators using data attributes.
+   Supports three states: pending, completed, in-progress.
+   ========================================== */
 .task-status {
   padding: var(--ch-unit);
   border-radius: var(--ch-unit);
   text-transform: capitalize;
+  color: var(--text-50);
+}
 
+/* Pending status - uses primary color palette */
+.task-status[data-type="pending"] {
+  background-color: var(--color-status-pending);
   color: var(--text-900);
 }
 
-.task-status[data-type="pending"] {
-  background-color: var(--color-status-pending);
-}
-
+/* Completed status - uses secondary color palette */
 .task-status[data-type="completed"] {
   background-color: var(--color-status-completed);
 }
 
+/* In-progress status - uses accent color palette */
 .task-status[data-type="in-progress"] {
   background-color: var(--color-status-in-progress);
 }
