@@ -1,0 +1,60 @@
+/* Minimal Reset */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Global */
+
+
+/* Blocks */
+
+.app {
+  display: flex;
+  gap: 1rem;
+
+  padding-inline: 1rem;
+}
+
+.task-list {
+    background-color: #d2d2d2fe;
+    border-radius: 1ch;
+    padding: 1ch;
+}
+
+.task {
+    background-color: #b9b9b9fe;
+    padding: 1ch;
+    border-radius: 1ch;
+}
