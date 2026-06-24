@@ -141,6 +141,7 @@ function renderList(taskList: TaskList): HTMLUListElement {
 
   const listHeader: HTMLHeadingElement = document.createElement("h2");
   listHeader.textContent = taskList.name;
+  listHeader.classList.add("task-list__title"); // Add class for styling
   taskListElement.appendChild(listHeader);
 
   console.log(`Rendering task list "${taskList.name}" with ID: ${taskList.id}`);
