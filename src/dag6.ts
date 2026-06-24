@@ -367,9 +367,9 @@ interface newTask extends Task {
     test: string;
 }
 
-const test: newTask = {
+// const test: newTask = {
 
-}
+// }
 
 
 interface User {
