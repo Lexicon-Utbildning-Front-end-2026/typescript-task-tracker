@@ -12,6 +12,7 @@ export type Task = {
   description: string;
   status: Status;
   createdAt: Date;
+  editFlag: boolean;
 };
 
 /**
