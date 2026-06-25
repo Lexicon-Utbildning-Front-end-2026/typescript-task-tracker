@@ -17,7 +17,7 @@ export interface CreateTaskDesc extends TaskDesc {
 
 export interface DeleteTaskDesc extends TaskDesc {
   taskId: number;
-  updateRender?: boolean;
+  updateRender: boolean;
 }
 
 export interface UpdateTaskStatusDesc extends TaskDesc {
@@ -108,6 +108,8 @@ export function deleteTask(description: DeleteTaskDesc): void {
   if (description.updateRender) {
     renderTasks(description); // Re-render the ap
   }
+
+  console.log(`Task ${description.taskId} deleted successfully`)
 }
 
 export function updateTaskStatus(description: UpdateTaskStatusDesc): void {

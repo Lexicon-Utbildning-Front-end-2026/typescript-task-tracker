@@ -167,17 +167,14 @@ body {
   padding: var(--ch-unit);
 }
 
-.task-title {
-  font-size: 1.25rem;
-  color: var(--text-900);
-  font-weight: var(--font-weight-bold);
-  padding-block-end: var(--ch-unit);
-  border-block-end: 0.2ch solid var(--primary-400);
-  width: 100%;
-}
-
 .task__description {
   /* No additional styles applied */
+}
+
+.task__footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 /* ==========================================

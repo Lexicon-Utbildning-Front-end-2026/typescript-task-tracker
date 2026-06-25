@@ -1,4 +1,4 @@
-import type { Task, TaskList, Status } from "./data.js";
+import { type Task, type TaskList, type Status, app, taskLists, tasks } from "./data.js";
 import { renderTasks } from "./render.js";
 import {
   createTaskList,
@@ -7,12 +7,7 @@ import {
   type CreateTaskDesc,
 } from "./tasktracker.js";
 
-/**
- * Array to store all tasks.
- */
-const tasks: Task[] = [];
-const taskLists: TaskList[] = [];
-const app: HTMLDivElement = document.getElementById("app") as HTMLDivElement;
+
 
 // Example usage
 // Generate a large set of tasks and task lists

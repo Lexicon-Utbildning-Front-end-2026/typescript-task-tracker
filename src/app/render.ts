@@ -1,4 +1,5 @@
-import type { Task, TaskList } from "./data.js";
+import { app, taskLists, tasks, type Task, type TaskList } from "./data.js";
+import { deleteTask, type DeleteTaskDesc } from "./tasktracker.js";
 import { createDropdown, createElement } from "./utility.js";
 
 export interface TaskDesc {
@@ -76,6 +77,7 @@ export function renderRelatedTask(
     `Task "${relatedTask.id}" added to list "${taskListElement.getAttribute("data-list-id")}"`,
   );
 }
+
 function renderFooterOfTask(relatedTask: Task) {
   const footer: HTMLElement = createElement("footer", ["task__footer"]);
 
@@ -95,6 +97,18 @@ function renderFooterOfTask(relatedTask: Task) {
     "task__delete-button",
   ]) as HTMLButtonElement;
   deleteButton.textContent = "Delete"; // Set button text to "Edit"
+  deleteButton.addEventListener("click", (event) => {
+
+    const deleteTaskDesc: DeleteTaskDesc = {
+      app,
+      tasks,
+      taskLists,
+      taskId: relatedTask.id,
+      updateRender: true
+    };
+
+    deleteTask(deleteTaskDesc);
+  });
 
   footer.append(select, deleteButton);
 
@@ -103,6 +117,7 @@ function renderFooterOfTask(relatedTask: Task) {
 
 function renderHeaderOfTask(relatedTask: Task) {
   const header: HTMLElement = createElement("header", ["task__header"]);
+  header.setAttribute("aria-label", relatedTask.description); // Set data-id attribute to task id
 
   const date: HTMLElement = createElement("time", [
     "task__date",

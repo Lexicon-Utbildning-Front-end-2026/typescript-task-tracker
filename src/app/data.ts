@@ -28,3 +28,12 @@ export type TaskList = {
  * Type for HTML elements that may be null.
  */
 export type HTMLElementOrNull = HTMLLIElement | HTMLDivElement | null;
+
+/**
+ * Array to store all tasks.
+ */
+export const tasks: Task[] = [];
+export const taskLists: TaskList[] = [];
+export const app: HTMLDivElement = document.getElementById(
+  "app",
+) as HTMLDivElement;
