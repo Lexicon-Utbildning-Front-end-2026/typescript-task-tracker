@@ -26,8 +26,15 @@ html {
 
 /* Remove default margins and padding from common elements */
 body,
-h1, h2, h3, h4, h5, h6,
-p, ol, ul {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
   margin: 0;
   padding: 0;
   font-weight: normal;
@@ -51,26 +58,28 @@ img {
    ========================================== */
 :root {
   /* Typography Scale */
-  --font-size-base: 16px;           /* Base font size */
-  --font-size-title: 2rem;          /* Heading title size */
-  --font-size-subtitle: 1.25rem;    /* Subheading size */
+  --font-size-base: 16px; /* Base font size */
+  --font-size-title: 2rem; /* Heading title size */
+  --font-size-subtitle: 1.25rem; /* Subheading size */
 
   /* Typography Weight */
-  --font-weight-bold: bold;         /* Bold text weight */
+  --font-weight-bold: bold; /* Bold text weight */
 
   /* Spacing Units */
-  --space-unit: 1rem;               /* Primary spacing unit */
-  --ch-unit: 1ch;                   /* Character-based spacing unit (width of '0') */
+  --space-unit: 1rem; /* Primary spacing unit */
+  --ch-unit: 1ch; /* Character-based spacing unit (width of '0') */
 
   /* Background Colors */
-  --color-bg-body: var(--background-200);    /* Page body background */
-  --color-bg-task-list: var(--background-300); /* Task list container background */
-  --color-bg-task: var(--background-500);     /* Individual task card background */
+  --color-bg-body: var(--background-200); /* Page body background */
+  --color-bg-task-list: var(
+    --background-300
+  ); /* Task list container background */
+  --color-bg-task: var(--background-500); /* Individual task card background */
 
   /* Status Indicator Colors */
-  --color-status-pending: var(--primary-300);      /* Pending status color */
-  --color-status-completed: var(--secondary-500);  /* Completed status color */
-  --color-status-in-progress: var(--accent-500);   /* In-progress status color */
+  --color-status-pending: var(--primary-300); /* Pending status color */
+  --color-status-completed: var(--secondary-500); /* Completed status color */
+  --color-status-in-progress: var(--accent-500); /* In-progress status color */
 
   /* Layout Constraints */
   --max-width-task-list: 15rem; /* Maximum width for task list column */
@@ -143,12 +152,19 @@ body {
   margin-block-end: var(--space-unit);
 }
 
+.task-list__header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  padding-block-end: var(--ch-unit);
+  border-block-end: 0.2ch solid var(--secondary-700);
+}
+
 .task-list__title {
   font-size: 1.25rem;
   color: var(--text-900);
   font-weight: var(--font-weight-bold);
-  padding-block-end: var(--ch-unit);
-  border-block-end: 0.2ch solid var(--secondary-700);
 }
 
 /* ==========================================

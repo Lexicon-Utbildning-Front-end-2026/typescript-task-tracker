@@ -1,5 +1,10 @@
 import { app, taskLists, tasks, type Task, type TaskList } from "./data.js";
-import { deleteTask, type DeleteTaskDesc } from "./tasktracker.js";
+import {
+  deleteTask,
+  deleteTaskList,
+  type DeleteTaskDesc,
+  type DeleteTaskListDesc,
+} from "./tasktracker.js";
 import { createDropdown, createElement } from "./utility.js";
 
 export interface TaskDesc {
@@ -23,7 +28,7 @@ export function renderTasks(taskDescription: TaskDesc): void {
       renderRelatedTask(task, taskListElement);
     });
 
-    taskDescription.app.appendChild(taskListElement);
+    taskDescription.app.append(taskListElement);
   });
 }
 
@@ -34,13 +39,38 @@ export function renderTasks(taskDescription: TaskDesc): void {
  */
 export function renderList(taskList: TaskList): HTMLUListElement {
   const taskListElement: HTMLUListElement = document.createElement("ul");
+
   taskListElement.setAttribute("data-list-id", taskList.id.toString());
   taskListElement.classList.add("task-list"); // Add class for styling
 
-  const listHeader: HTMLHeadingElement = document.createElement("h2");
-  listHeader.textContent = taskList.name;
-  listHeader.classList.add("task-list__title"); // Add class for styling
-  taskListElement.appendChild(listHeader);
+  //   const listHeader: HTMLHeadingElement = document.createElement("h2");
+  //   listHeader.textContent = taskList.name;
+  //   listHeader.classList.add("task-list__title"); // Add class for styling
+  //   taskListElement.append(listHeader);
+
+  const header: HTMLElement = createElement("header", ["task-list__header"]);
+  {
+    const listHeader: HTMLHeadingElement = document.createElement("h2");
+    listHeader.textContent = taskList.name;
+    listHeader.classList.add("task-list__title"); // Add class for styling
+
+    const deleteButton: HTMLButtonElement = createElement("button", [
+      "task-list__delete-button",
+    ]) as HTMLButtonElement;
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", (event) => {
+      const description: DeleteTaskListDesc = {
+        listId: taskList.id,
+        app,
+        tasks,
+        taskLists,
+      };
+
+      deleteTaskList(description);
+    });
+    header.append(listHeader, deleteButton); // Append the heading to the header element
+  }
+  taskListElement.append(header);
 
   console.log(`Rendering task list "${taskList.name}" with ID: ${taskList.id}`);
   return taskListElement;
@@ -98,13 +128,12 @@ function renderFooterOfTask(relatedTask: Task) {
   ]) as HTMLButtonElement;
   deleteButton.textContent = "Delete"; // Set button text to "Edit"
   deleteButton.addEventListener("click", (event) => {
-
     const deleteTaskDesc: DeleteTaskDesc = {
       app,
       tasks,
       taskLists,
       taskId: relatedTask.id,
-      updateRender: true
+      updateRender: true,
     };
 
     deleteTask(deleteTaskDesc);

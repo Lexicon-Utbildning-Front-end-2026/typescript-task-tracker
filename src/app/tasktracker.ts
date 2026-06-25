@@ -68,6 +68,7 @@ export function deleteTaskList(description: DeleteTaskListDesc): void {
     deleteTask(deleteDesc);
   });
 
+  description.taskLists.splice(foundIndex, 1); // Remove the task from the array
   renderTasks(description);
 }
 
@@ -109,7 +110,7 @@ export function deleteTask(description: DeleteTaskDesc): void {
     renderTasks(description); // Re-render the ap
   }
 
-  console.log(`Task ${description.taskId} deleted successfully`)
+  console.log(`Task ${description.taskId} deleted successfully`);
 }
 
 export function updateTaskStatus(description: UpdateTaskStatusDesc): void {
