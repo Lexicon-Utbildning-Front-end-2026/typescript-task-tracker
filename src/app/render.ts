@@ -1,8 +1,10 @@
 import { app, taskLists, tasks, type Task, type TaskList } from "./data.js";
 import {
+  createTask,
   createTaskList,
   deleteTask,
   deleteTaskList,
+  type CreateTaskDesc,
   type CreateTaskListDesc,
   type DeleteTaskDesc,
   type DeleteTaskListDesc,
@@ -29,6 +31,33 @@ export function renderTasks(taskDescription: TaskDesc): void {
     relatedTasks.forEach((task: Task) => {
       renderRelatedTask(task, taskListElement);
     });
+
+    const section: HTMLElement = createElement("section", [
+      "task",
+      "task--center",
+    ]);
+    {
+      const newTaskButton: HTMLButtonElement = createElement("button", [
+        "task__new-task-button",
+      ]) as HTMLButtonElement;
+
+      newTaskButton.textContent = "New Task";
+      newTaskButton.addEventListener("click", (event) => {
+        const newTaskDesc: CreateTaskDesc = {
+          description: "New Task",
+          listId: taskList.id,
+          status: "pending",
+          app,
+          tasks,
+          taskLists,
+        };
+
+        createTask(newTaskDesc);
+      });
+
+      section.append(newTaskButton);
+      taskListElement.append(section);
+    }
 
     taskDescription.app.append(taskListElement);
   });

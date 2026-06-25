@@ -175,16 +175,24 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, 1fr);
   gap: var(--space-unit);
+
   align-items: start;
-  justify-content: start;
+  justify-content: stretch;
   justify-items: start;
+
   background-color: var(--color-bg-task);
   border-radius: var(--ch-unit);
   padding: var(--ch-unit);
+
+  width: 100%;
+}
+
+.task--center {
+  justify-content: center;
 }
 
 .task__description {
-  /* No additional styles applied */
+  width: 100%;
 }
 
 .task__footer {
