@@ -1,5 +1,5 @@
 import type { Task, TaskList } from "./data.js";
-import { createElement } from "./utility.js";
+import { createDropdown, createElement } from "./utility.js";
 
 export interface TaskDesc {
   taskLists: TaskList[];
@@ -79,15 +79,24 @@ export function renderRelatedTask(
 function renderFooterOfTask(relatedTask: Task) {
   const footer: HTMLElement = createElement("footer", ["task__footer"]);
 
-  const statusSpan: HTMLSpanElement = createElement("span", ["task__status"]);
-  statusSpan.setAttribute("data-type", relatedTask.status);
-  statusSpan.textContent = relatedTask.status; // Display the task's status
+  const select: HTMLSelectElement = createDropdown(
+    ["task__status"],
+    ["pending", "in-progress", "completed"],
+    "",
+    (newStatus: string) => {
+      select.setAttribute("data-type", newStatus);
+    },
+  ); // Create dropdown with status options"], [)
+
+  select.value = relatedTask.status;
+  select.setAttribute("data-type", relatedTask.status);
 
   const deleteButton: HTMLButtonElement = createElement("button", [
-    "task__edit-button",
+    "task__delete-button",
   ]) as HTMLButtonElement;
+  deleteButton.textContent = "Delete"; // Set button text to "Edit"
 
-  footer.append(statusSpan, deleteButton);
+  footer.append(select, deleteButton);
 
   return footer;
 }
